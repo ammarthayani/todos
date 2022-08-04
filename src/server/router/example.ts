@@ -1,11 +1,9 @@
-import { createRouter } from './context';
 import { z } from 'zod';
 import { createProtectedRouter } from './protected-router';
 
 export const exampleRouter = createProtectedRouter()
 	.query('getTodos', {
-		input: z.object({}),
-		async resolve({ input, ctx }) {
+		async resolve({ ctx }) {
 			const todos = await ctx.prisma.todo.findMany({
 				where: {
 					userId: ctx.session.user.id,

@@ -6,10 +6,7 @@ import { trpc } from '../utils/trpc';
 
 const Todos = () => {
 	const trpcContext = trpc.useContext();
-	const { data, isLoading, error } = trpc.useQuery([
-		'example.getTodos',
-		{ id: '' },
-	]);
+	const { data, isLoading, error } = trpc.useQuery(['example.getTodos']);
 	const [submitTodoState, setSubmitTodoState] = useState('');
 	const { data: session, status } = useSession();
 	const router = useRouter();
