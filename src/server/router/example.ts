@@ -6,7 +6,11 @@ export const exampleRouter = createProtectedRouter()
 	.query('getTodos', {
 		input: z.object({}),
 		async resolve({ input, ctx }) {
-			const todos = await ctx.prisma.todo.findMany();
+			const todos = await ctx.prisma.todo.findMany({
+				where: {
+					userId: ctx.session.user.id,
+				},
+			});
 			return todos;
 		},
 	})
