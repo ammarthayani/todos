@@ -6,32 +6,44 @@ import { trpc } from '../utils/trpc';
 
 const Todos = () => {
 	const trpcContext = trpc.useContext();
-	const { data } = trpc.useQuery(['example.getTodos', { id: '' }]);
+	const { data, isLoading, error } = trpc.useQuery([
+		'example.getTodos',
+		{ id: '' },
+	]);
 	const [submitTodoState, setSubmitTodoState] = useState('');
 	const { data: session, status } = useSession();
 	const router = useRouter();
 
-	const { mutate } = trpc.useMutation(['example.createTodo'], {
-		onSuccess() {
-			trpcContext.invalidateQueries(['example.getTodos']);
-		},
-	});
+	const { mutate, isLoading: mutationLoading } = trpc.useMutation(
+		['example.createTodo'],
+		{
+			onSuccess() {
+				trpcContext.invalidateQueries(['example.getTodos']);
+			},
+		}
+	);
 
 	console.log(data);
 	if (status === 'unauthenticated') {
 		router.push('/signin');
 	}
 
-	if (!data || status === 'loading') {
+	if (!data || status === 'loading' || isLoading) {
 		return <div>Loading</div>;
+	}
+
+	if (error) {
+		return <div>Error loading todos, please try again later</div>;
 	}
 
 	const AddTodo = (e: any) => {
 		e.preventDefault();
 		mutate({ name: submitTodoState, done: false });
+		setSubmitTodoState('');
 	};
 
 	const TodoFormChange = (e: any) => {
+		e.preventDefault();
 		setSubmitTodoState(e.target.value);
 	};
 
