@@ -16,9 +16,11 @@
     "@trpc/next": "^9.26.2",
     "@trpc/react": "^9.26.2",
     "@trpc/server": "^9.26.2",
+    "date-fns": "^2.29.1",
     "next": "12.2.3",
     "next-auth": "^4.10.2",
     "react": "18.2.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-query": "^3.39.2",
@@ -26,8 +28,10 @@
     "zod": "^3.17.3"
   },
   "devDependencies": {
+    "@types/date-fns": "^2.6.0",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
+    "@types/react-datepicker": "^4.4.2",
     "@types/react-dom": "18.0.5",
     "autoprefixer": "^10.4.8",
     "eslint": "8.18.0",
