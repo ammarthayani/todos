@@ -11,11 +11,11 @@ const SignIn: NextPage = () => {
 				<h5 className="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">
 					Sign In With Google
 				</h5>
-				<div className="flex justify-center items-center">
+				<div className=" mt-4 flex justify-center items-center">
 					<button
 						type="button"
 						onClick={() => signIn('google', { callbackUrl: redirectUrl })}
-						className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 my-2"
+						className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-3 text-center inline-flex items-center"
 					>
 						<svg
 							className="w-4 h-4"
