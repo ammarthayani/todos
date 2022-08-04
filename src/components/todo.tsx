@@ -7,7 +7,7 @@ const Todo = (props: any) => {
 
 	const [todostate, setTodo] = useState(props.todo);
 
-	const { mutate } = trpc.useMutation(['example.deleteTodo'], {
+	const { mutate, isLoading } = trpc.useMutation(['example.deleteTodo'], {
 		onSuccess() {
 			trpcContext.invalidateQueries(['example.getTodos']);
 		},
@@ -24,11 +24,15 @@ const Todo = (props: any) => {
 	};
 
 	return (
-		<div className=" flex p-2 w-full h-2 items-center justify-center bg-white rounded-lg border shadow-md sm:p-8">
+		<div
+			className={` ${
+				isLoading ? 'bg-gray-300' : 'bg-white'
+			} flex p-2 w-full h-2 items-center justify-center  rounded-lg border shadow-md sm:p-8`}
+		>
 			<h5
-				className={`text-2xl font-bold text-gray-900 ${
+				className={`text-2xl font-bold ${
 					todostate.done ? 'line-through' : ''
-				}`}
+				} ${isLoading ? 'text-gray-500' : 'text-gray-900'}`}
 			>
 				{todostate.name}
 			</h5>

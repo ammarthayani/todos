@@ -53,7 +53,7 @@ const Todos = () => {
 			<button
 				onClick={() => signOut()}
 				type="button"
-				className=" absolute top-4 right-10 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2"
+				className="absolute top-4 right-10 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 			>
 				Sign Out
 			</button>
@@ -63,13 +63,32 @@ const Todos = () => {
 					<input
 						type="text"
 						id="first_name"
-						placeholder="Add Todo"
+						placeholder={mutationLoading ? 'Adding...' : 'Add Todo'}
 						className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
 						value={submitTodoState}
 						onChange={(e) => TodoFormChange(e)}
 						required
 					></input>
-					<button type="submit">Add</button>
+					<button
+						type="submit"
+						className="w-10 h-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
+					>
+						<svg
+							className="w-6 h-6"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="2"
+								d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+							></path>
+						</svg>
+						<span className="sr-only">Add Todo</span>
+					</button>
 				</form>
 			</div>
 			<div className="flex flex-col space-y-2 p-5">
