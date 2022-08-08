@@ -1,3 +1,4 @@
-# Create T3 App
+# Simple Todo App
+This is a simple todo app that I made to learn Next.js and TRPC. Additionally, I added OAuth so that users can login with google and access only their todos.
 
-This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
+Check it out at https://todos-ammarthayani.vercel.app/
